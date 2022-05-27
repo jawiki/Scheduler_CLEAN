@@ -13,6 +13,10 @@ import InterviewerList from "../src/components/InterviewerList";
 import Appointment from "../src/components/Appointment/index.js";
 import header from "../src/components/Appointment/header.js";
 import empty from "../src/components/Appointment/empty.js";
+import show from "../src/components/Appointment/show.js";
+import confirm from "../src/components/Appointment/confirm.js";
+import status from "../src/components/Appointment/status.js";
+import error from "../src/components/Appointment/error.js";
 
 storiesOf("Button", module)
   .addParameters({
