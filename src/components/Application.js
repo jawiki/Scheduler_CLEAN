@@ -1,6 +1,7 @@
 import React from "react";
 
 import "components/Application.scss";
+import DayList from "components/DayList";
 
 export default function Application(props) {
   return (
@@ -13,6 +14,11 @@ export default function Application(props) {
         />
         <hr className="sidebar__separator sidebar--centered" />
         <nav className="sidebar__menu"></nav>
+        <DayList
+          days={days}
+          day={"Monday"}
+          setDay={(day) => console.log(day)}
+        />
         <img
           className="sidebar__lhl sidebar--centered"
           src="images/lhl.png"
@@ -25,3 +31,21 @@ export default function Application(props) {
     </main>
   );
 }
+
+const days = [
+  {
+    id: 1,
+    name: "Monday",
+    spots: 2,
+  },
+  {
+    id: 2,
+    name: "Tuesday",
+    spots: 5,
+  },
+  {
+    id: 3,
+    name: "Wednesday",
+    spots: 0,
+  },
+];
