@@ -1,14 +1,14 @@
 import React, { Fragment } from "react";
 import "./styles.scss";
 // import React from "react";
-// import Confirm from "./confirm";
+import Confirm from "./confirm";
 import Empty from "./empty";
-// import Error from "./error";
-// import Form from "./form";
+import Error from "./error";
+import Form from "./form";
 import Header from "./header";
 import Show from "./show";
-// import Status from "./status";
-// import useVisualMode from "hooks/useVisualMode";
+import Status from "./status";
+import useVisualMode from "../hooks/useVisualMode";
 
 const EMPTY = "EMPTY";
 const SHOW = "SHOW";
@@ -20,9 +20,6 @@ const EDIT = "EDIT";
 const ERROR_SAVE = "ERROR_SAVE";
 const ERROR_DELETE = "ERROR_DELETE";
 
-// const { mode, transition, back } = useVisualMode(
-//     props.interview ? SHOW : EMPTY
-//   );
 
 export default function Appointment(props) {
   const { mode, transition, back } = useVisualMode(
