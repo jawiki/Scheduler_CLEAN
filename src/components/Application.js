@@ -28,16 +28,22 @@ export default function Application(props) {
       // you may put the line below, but will have to remove/comment hardcoded appointments variable
       appointments: {},
     });
+    
+const dailyAppointments = [];
 
+  // const appointments = getAppointmentsForDay(state, state.day);
 
-const [day, setDay] = useState("Monday");
-const [days, setDays] = useState([]);
-// you may not have the appointments state, its ok if you dont
-// const [appointments, setAppointments] = useState({});
+  const setDay = day => setState({ ...state, day });
 
-  const appointments = getAppointmentsForDay(state, state.day);
+  const setDays = (days) => {
+    setState((prev) => ({ ...prev, days }));
+  }
 
-  const schedule = appointments.map((appointment) => {
+  useEffect(() => {
+  axios.get("/api/days").then(response => setDays(response.data));
+    }, []);
+
+  const schedule = dailyAppointments.map((appointment) => {
     return (
       <Appointment
         key={appointment.id}
@@ -58,7 +64,11 @@ const [days, setDays] = useState([]);
         />
         <hr className="sidebar__separator sidebar--centered" />
         <nav className="sidebar__menu"></nav>
-        <DayList days={days} value={day} onChange={setDay} />
+        <DayList
+          days={state.days}
+          day={state.day}
+          // setDay={.....}
+        />
         <img
           className="sidebar__lhl sidebar--centered"
           src="images/lhl.png"
@@ -67,31 +77,8 @@ const [days, setDays] = useState([]);
       </section>
       <section className="schedule">
         {schedule}
-        {/* Object.values(appointments).map(appointment => ( */}
-          {/* <Appointment key={Appointment.id} {...Appointment} />
-        ); */}
         <Appointment key="last" time="5pm" />
       </section>
     </main>
   );
 }
-
-// const [days, setDays] = useState([]);
-
-// const days = [
-//   {
-//     id: 1,
-//     name: "Monday",
-//     spots: 2,
-//   },
-//   {
-//     id: 2,
-//     name: "Tuesday",
-//     spots: 5,
-//   },
-//   {
-//     id: 3,
-//     name: "Wednesday",
-//     spots: 0,
-//   },
-// ];
