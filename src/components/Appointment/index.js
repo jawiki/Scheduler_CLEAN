@@ -8,7 +8,7 @@ import Form from "./form";
 import Header from "./header";
 import Show from "./show";
 import Status from "./status";
-import useVisualMode from "../hooks/useVisualMode";
+import useVisualMode from "../../hooks/useVisualMode";
 
 const EMPTY = "EMPTY";
 const SHOW = "SHOW";
