@@ -1,6 +1,6 @@
-// import React, { Fragment } from "react";
+import React, { Fragment } from "react";
 import "./styles.scss";
-import React from "react";
+// import React from "react";
 import Confirm from "./confirm";
 import Empty from "./empty";
 import Error from "./error";
@@ -27,30 +27,35 @@ export default function Appointment(props) {
     props.interview ? SHOW : EMPTY
   );
 
-  const save = (name, interviewer) => {
-    const interview = {
-      student: name,
-      interviewer
-    };
-    transition(SAVING);
-    props.bookInterview(props.id, interview)
-      .then(() => transition(SHOW))
-      .catch(err => transition(ERROR_SAVE, true));
-  };
+ const save = (name, interviewer) => {
+   const interview = {
+     student: name,
+     interviewer,
+   };
+   transition(SAVING);
+   props
+     .bookInterview(props.id, interview)
+     .then(() => transition(SHOW))
+     .catch((err) => transition(ERROR_SAVE, true));
+ };
 
-    const editApp = () => {
-    transition(EDIT);
-  };
+ // Delete interview function
+ const deleteApp = () => {
+   transition(DELETE, true);
+   props
+     .cancelInterview(props.id)
+     .then(() => transition(EMPTY))
+     .catch((err) => transition(ERROR_DELETE, true));
+ };
 
-  const deleteApp = () => {
-    transition(DELETE, true);
-    props.cancelInterview(props.id)
-      .then(() => transition(EMPTY))
-      .catch(err => transition(ERROR_DELETE, true));
-  };
-  const deleteConfirm = () => {
-    transition(CONFIRM);
-  };
+ // Transition functions
+ const deleteConfirm = () => {
+   transition(CONFIRM);
+ };
+
+ const editApp = () => {
+   transition(EDIT);
+ };
 
 
   return (
